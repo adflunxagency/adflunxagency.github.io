@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Adflunx Agency | Digital Marketing</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0e0e0e;
+    --surface: #161616;
+    --orange: #F5841F;
+    --orange-light: #FF9F3F;
+    --cream: #F5F0E8;
+    --muted: #888;
+    --border: #222;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--cream);
+    font-family: 'DM Sans', sans-serif;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 60px;
+    border-bottom: 1px solid var(--border);
+    background: rgba(14,14,14,0.92);
+    backdrop-filter: blur(12px);
+  }
+
+  .nav-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    letter-spacing: 3px;
+    color: var(--orange);
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 36px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--cream); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 120px 60px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    top: -100px; right: -100px;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(245,132,31,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-grid {
+    position: absolute;
+    inset: 0;
+    background-image: 
+      linear-gradient(rgba(245,132,31,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(245,132,31,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+  }
+
+  .hero-content { position: relative; max-width: 900px; }
+
+  .hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(245,132,31,0.1);
+    border: 1px solid rgba(245,132,31,0.25);
+    color: var(--orange);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 8px 16px;
+    border-radius: 100px;
+    margin-bottom: 32px;
+    animation: fadeUp 0.6s ease both;
+  }
+
+  .hero-tag::before {
+    content: '';
+    width: 6px; height: 6px;
+    background: var(--orange);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+
+  .hero-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(64px, 10vw, 120px);
+    line-height: 0.92;
+    letter-spacing: 2px;
+    margin-bottom: 24px;
+    animation: fadeUp 0.6s 0.1s ease both;
+  }
+
+  .hero-name span { color: var(--orange); }
+
+  .hero-desc {
+    font-size: 18px;
+    font-weight: 300;
+    color: var(--muted);
+    line-height: 1.7;
+    max-width: 560px;
+    margin-bottom: 48px;
+    animation: fadeUp 0.6s 0.2s ease both;
+  }
+
+  .hero-desc strong { color: var(--cream); font-weight: 500; }
+
+  .hero-cta {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    animation: fadeUp 0.6s 0.3s ease both;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--orange);
+    color: #000;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+    padding: 14px 28px;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.2s;
+  }
+
+  .btn-primary:hover { background: var(--orange-light); transform: translateY(-1px); }
+
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: transparent;
+    color: var(--cream);
+    font-weight: 500;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+    padding: 14px 28px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    text-decoration: none;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+
+  .btn-secondary:hover { border-color: var(--orange); transform: translateY(-1px); }
+
+  .hero-stats {
+    position: absolute;
+    right: 60px;
+    bottom: 80px;
+    display: flex;
+    gap: 48px;
+    animation: fadeUp 0.6s 0.4s ease both;
+  }
+
+  .stat-item { text-align: right; }
+
+  .stat-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 48px;
+    color: var(--orange);
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-top: 4px;
+  }
+
+  /* SECTIONS */
+  section { padding: 100px 60px; }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 16px;
+  }
+
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(40px, 6vw, 72px);
+    line-height: 1;
+    letter-spacing: 1px;
+    margin-bottom: 60px;
+  }
+
+  /* SKILLS */
+  .skills-section { background: var(--surface); }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 2px;
+  }
+
+  .skill-card {
+    background: var(--bg);
+    padding: 36px;
+    transition: background 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .skill-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px; height: 100%;
+    background: var(--orange);
+    transform: scaleY(0);
+    transition: transform 0.3s;
+    transform-origin: bottom;
+  }
+
+  .skill-card:hover::before { transform: scaleY(1); }
+  .skill-card:hover { background: #111; }
+
+  .skill-icon {
+    font-size: 32px;
+    margin-bottom: 20px;
+  }
+
+  .skill-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 24px;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+  }
+
+  .skill-desc {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  /* PROJECTS */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 24px;
+  }
+
+  .project-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: border-color 0.3s, transform 0.3s;
+  }
+
+  .project-card:hover {
+    border-color: var(--orange);
+    transform: translateY(-4px);
+  }
+
+  .project-header {
+    padding: 32px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  .project-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+  }
+
+  .project-role {
+    font-size: 12px;
+    color: var(--orange);
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .project-badge {
+    background: rgba(245,132,31,0.1);
+    border: 1px solid rgba(245,132,31,0.2);
+    color: var(--orange);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 6px 12px;
+    border-radius: 100px;
+    white-space: nowrap;
+  }
+
+  .project-body { padding: 32px; }
+
+  .project-desc {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.7;
+    margin-bottom: 28px;
+  }
+
+  .project-results {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .result-item { }
+
+  .result-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 32px;
+    color: var(--orange);
+    line-height: 1;
+  }
+
+  .result-label {
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.5px;
+    margin-top: 2px;
+  }
+
+  /* TOOLS */
+  .tools-section { background: var(--surface); }
+
+  .tools-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .tool-pill {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    color: var(--cream);
+    font-size: 13px;
+    font-weight: 500;
+    padding: 10px 20px;
+    border-radius: 100px;
+    transition: border-color 0.2s, color 0.2s;
+  }
+
+  .tool-pill:hover {
+    border-color: var(--orange);
+    color: var(--orange);
+  }
+
+  /* CONTACT */
+  .contact-section {
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .contact-bg {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(245,132,31,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .contact-section .section-title { margin-bottom: 20px; }
+
+  .contact-desc {
+    font-size: 16px;
+    color: var(--muted);
+    margin-bottom: 48px;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+  }
+
+  .contact-links {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  /* FOOTER */
+  footer {
+    padding: 32px 60px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  footer p {
+    font-size: 13px;
+    color: var(--muted);
+  }
+
+  .footer-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 18px;
+    letter-spacing: 3px;
+    color: var(--orange);
+  }
+
+  /* DIVIDER */
+  .divider {
+    height: 1px;
+    background: var(--border);
+    margin: 0 60px;
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+
+  .fade-in {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (max-width: 768px) {
+    nav { padding: 16px 24px; }
+    .nav-links { display: none; }
+    .hero { padding: 100px 24px 60px; }
+    .hero-stats { position: static; margin-top: 48px; justify-content: flex-start; }
+    section { padding: 60px 24px; }
+    .divider { margin: 0 24px; }
+    footer { padding: 24px; flex-direction: column; gap: 12px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">ADFLUNX AGENCY</div>
+  <ul class="nav-links">
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#tools">Tools</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="hero-tag">Available for New Clients</div>
+    <h1 class="hero-name">Adflunx<br><span>Agency.</span></h1>
+    <p class="hero-desc">
+      We are a <strong>Digital Marketing Agency</strong> based in Karachi, Pakistan, running real ad campaigns for real businesses. We specialize in <strong>Meta Ads, content strategy, and marketing automation</strong> that actually drives results.
+    </p>
+    <div class="hero-cta">
+      <a href="https://wa.me/923272286509" class="btn-primary">💬 Let's Talk</a>
+      <a href="#projects" class="btn-secondary">View Our Work ↓</a>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="stat-item">
+      <div class="stat-num">2+</div>
+      <div class="stat-label">Live Clients</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">PKR<br>1K</div>
+      <div class="stat-label">Spend Managed</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">10</div>
+      <div class="stat-label">Leads Generated</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SKILLS -->
+<section class="skills-section" id="skills">
+  <div class="section-label">What We Do</div>
+  <h2 class="section-title fade-in">Core Skills</h2>
+  <div class="skills-grid fade-in">
+    <div class="skill-card">
+      <div class="skill-icon">📊</div>
+      <div class="skill-name">Meta Ads</div>
+      <div class="skill-desc">Facebook and Instagram campaign setup, audience targeting, budget optimization, and performance tracking across multiple objectives.</div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">✍️</div>
+      <div class="skill-name">Copywriting</div>
+      <div class="skill-desc">Writing ad copy, captions, and hooks that stop the scroll and convert viewers into leads. Hook, body, CTA — structured to sell.</div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">🤖</div>
+      <div class="skill-name">Automation</div>
+      <div class="skill-desc">Setting up ManyChat chatbot flows on Facebook and Instagram to capture and qualify leads automatically 24/7.</div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">📱</div>
+      <div class="skill-name">Social Media</div>
+      <div class="skill-desc">Managing full social media presence including content strategy, posting schedule, and community engagement for business pages.</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-label">Real Work</div>
+  <h2 class="section-title fade-in">Our Work</h2>
+  <div class="projects-grid">
+
+    <div class="project-card fade-in">
+      <div class="project-header">
+        <div>
+          <div class="project-name">Guardian Tax Advisors</div>
+          <div class="project-role">Meta Ads Manager</div>
+        </div>
+        <div class="project-badge">Live Client</div>
+      </div>
+      <div class="project-body">
+        <p class="project-desc">Managed Facebook and Instagram Ads for a tax advisory firm in Pakistan. Ran a WhatsApp Messages campaign targeting major Pakistani cities with a custom audience strategy and ad creatives designed in Canva.</p>
+        <div class="project-results">
+          <div class="result-item">
+            <div class="result-num">10</div>
+            <div class="result-label">Conversations Started</div>
+          </div>
+          <div class="result-item">
+            <div class="result-num">1,975</div>
+            <div class="result-label">People Reached</div>
+          </div>
+          <div class="result-item">
+            <div class="result-num">PKR 1,012</div>
+            <div class="result-label">Total Ad Spend</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card fade-in">
+      <div class="project-header">
+        <div>
+          <div class="project-name">Adflunx Agency</div>
+          <div class="project-role">Founder & Manager</div>
+        </div>
+        <div class="project-badge">My Agency</div>
+      </div>
+      <div class="project-body">
+        <p class="project-desc">Built and launched a complete digital marketing agency from scratch. Set up Facebook page, Instagram account, full ManyChat automation system, WhatsApp Business with catalog, and a 7-post carousel launch content strategy.</p>
+        <div class="project-results">
+          <div class="result-item">
+            <div class="result-num">3</div>
+            <div class="result-label">Automations Live</div>
+          </div>
+          <div class="result-item">
+            <div class="result-num">7</div>
+            <div class="result-label">Launch Posts</div>
+          </div>
+          <div class="result-item">
+            <div class="result-num">0→1</div>
+            <div class="result-label">Built from Scratch</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- TOOLS -->
+<section class="tools-section" id="tools">
+  <div class="section-label">My Stack</div>
+  <h2 class="section-title fade-in">Tools I Use</h2>
+  <div class="tools-grid fade-in">
+    <span class="tool-pill">Meta Ads Manager</span>
+    <span class="tool-pill">Meta Business Suite</span>
+    <span class="tool-pill">ManyChat</span>
+    <span class="tool-pill">WhatsApp Business</span>
+    <span class="tool-pill">Canva</span>
+    <span class="tool-pill">Facebook Ads</span>
+    <span class="tool-pill">Instagram Ads</span>
+    <span class="tool-pill">ChatGPT</span>
+    <span class="tool-pill">Notion</span>
+    <span class="tool-pill">Content Strategy</span>
+    <span class="tool-pill">Ad Copywriting</span>
+    <span class="tool-pill">Marketing Automation</span>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <div class="contact-bg"></div>
+  <div class="section-label">Get In Touch</div>
+  <h2 class="section-title fade-in">Let's Work<br>Together.</h2>
+  <p class="contact-desc fade-in">Looking for results-driven marketing for your business? Let's talk about how Adflunx Agency can help you grow.</p>
+  <div class="contact-links fade-in">
+    <a href="https://wa.me/923272286509" class="btn-primary">💬 WhatsApp Us</a>
+    <a href="mailto:adflunxagency@gmail.com" class="btn-secondary">✉️ Email Us</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">ADFLUNX AGENCY</div>
+  <p>© 2026 Adflunx Agency — Digital Marketing, Karachi</p>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
